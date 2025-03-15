@@ -91,6 +91,7 @@ const Avatar = styled.img`
 const Button = styled.a`
   color: ${({ theme }) => theme.primary};
   text-decoration: none;
+  background-color: ${({ theme }) => theme.white};
   font-weight: 600;
   text-align: center;
 `;
