@@ -9,7 +9,7 @@ export const Bio = {
     "I am a motivated and versatile full-stack web developer with expertise in UI/UX design, programming, and DSA. Passionate about learning and problem-solving, I strive to deliver high-quality results with a growth mindset.",
   github: "https://github.com/Nityanand17",
   resume:
-    "https://drive.google.com/file/d/1IQiV-evysq4ZqmXRaSBIqcPWFjgXiAbH/view?usp=drivesdk",
+    "  https://drive.google.com/file/d/1LmVx_KG_Wvx2bLFSUEI7KYwoLDuQA298/view?usp=drivesdk  ",
   linkedin: "https://www.linkedin.com/in/nityanand-yadav-28a5012a8?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
   twitter: "https://twitter.com/NityanandYadav253",
   insta: "https://www.instagram.com/nityanand.yadav_/",
