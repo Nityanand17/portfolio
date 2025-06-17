@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { education } from "../../data/constants";
 import EducationCard from "../cards/EducationCard";
 import EarthCanvas from "../canvas/Earth";
+import { useThemeContext } from "../../utils/ThemeContext";
 
 const Container = styled.div`
   display: flex;
@@ -50,6 +51,8 @@ const Desc = styled.div`
 `;
 
 const Education = () => {
+  const { isDarkMode } = useThemeContext();
+  
   return (
     <Container id="Education">
       <Wrapper>
@@ -63,7 +66,7 @@ const Education = () => {
           educational details are as follows.
         </Desc>
 
-        <VerticalTimeline>
+        <VerticalTimeline lineColor={isDarkMode ? "#854CE6" : "#be1adb"}>
           {education.map((education, index) => (
             <EducationCard key={`education-${index}`} education={education} />
           ))}

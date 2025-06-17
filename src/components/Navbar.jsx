@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link as LinkR } from "react-router-dom";
 import styled, { useTheme } from "styled-components";
 import { Bio } from "../data/constants";
-import { MenuRounded } from "@mui/icons-material";
+import { MenuRounded, LightModeRounded, DarkModeRounded } from "@mui/icons-material";
+import { useThemeContext } from "../utils/ThemeContext";
 
 const Nav = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -26,22 +27,26 @@ const NavbarContainer = styled.div`
   justify-content: space-between;
   font-size: 1rem;
 `;
+
 const NavLogo = styled(LinkR)`
-  width: 80%;
+  width: 25%;
   padding: 0 6px;
   font-weight: 500;
   font-size: 18px;
   text-decoration: none;
-  color: inherit;
+  color: ${({ theme }) => theme.text_primary};
+
+  @media screen and (max-width: 768px) {
+    width: 80%;
+  }
 `;
 
 const NavItems = styled.ul`
-  width: 100%;
+  width: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 32px;
-  padding: 0 6px;
   list-style: none;
 
   @media screen and (max-width: 768px) {
@@ -61,12 +66,12 @@ const NavLink = styled.a`
 `;
 
 const ButtonContainer = styled.div`
-  width: 80%;
-  height: 100%;
+  width: 25%;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
-  padding: 0 6px;
+  gap: 16px;
+  
   @media screen and (max-width: 768px) {
     display: none;
   }
@@ -91,6 +96,37 @@ const GithubButton = styled.a`
   }
 `;
 
+const ThemeToggleButton = styled.button`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background-color: ${({ theme }) => theme.bgLight};
+  color: ${({ theme }) => theme.text_primary};
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  position: relative;
+  overflow: hidden;
+  
+  &:hover {
+    background-color: ${({ theme }) => theme.primary + '20'};
+    transform: translateY(-2px);
+  }
+  
+  svg {
+    font-size: 20px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+`;
+
 const MobileIcon = styled.div`
   height: 100%;
   display: flex;
@@ -102,13 +138,19 @@ const MobileIcon = styled.div`
   }
 `;
 
+const MobileMenuTop = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 40px;
+`;
+
 const MobileMenu = styled.ul`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: start;
   gap: 16px;
-  padding: 0 6px;
   list-style: none;
   width: 100%;
   padding: 12px 40px 24px 40px;
@@ -129,6 +171,8 @@ const MobileMenu = styled.ul`
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const theme = useTheme();
+  const { isDarkMode, toggleTheme } = useThemeContext();
+
   return (
     <Nav>
       <NavbarContainer>
@@ -141,21 +185,22 @@ const Navbar = () => {
         <NavItems>
           <NavLink href="#About">About</NavLink>
           <NavLink href="#Skills">Skills</NavLink>
-          <NavLink href="#Experience">Experience</NavLink>
           <NavLink href="#Projects">Projects</NavLink>
           <NavLink href="#Education">Education</NavLink>
         </NavItems>
 
         {isOpen && (
           <MobileMenu isOpen={isOpen}>
+            <MobileMenuTop>
+              <ThemeToggleButton onClick={toggleTheme}>
+                {isDarkMode ? <LightModeRounded /> : <DarkModeRounded />}
+              </ThemeToggleButton>
+            </MobileMenuTop>
             <NavLink onClick={() => setIsOpen(!isOpen)} href="#About">
               About
             </NavLink>
             <NavLink onClick={() => setIsOpen(!isOpen)} href="#Skills">
               Skills
-            </NavLink>
-            <NavLink onClick={() => setIsOpen(!isOpen)} href="#Experience">
-              Experience
             </NavLink>
             <NavLink onClick={() => setIsOpen(!isOpen)} href="#Projects">
               Projects
@@ -177,6 +222,9 @@ const Navbar = () => {
         )}
 
         <ButtonContainer>
+          <ThemeToggleButton onClick={toggleTheme}>
+            {isDarkMode ? <LightModeRounded /> : <DarkModeRounded />}
+          </ThemeToggleButton>
           <GithubButton href={Bio.github} target="_Blank">
             Github Profile
           </GithubButton>

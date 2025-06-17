@@ -4,7 +4,6 @@ import { Bio } from "../../data/constants";
 import Typewriter from "typewriter-effect";
 import HeroImg from "../../images/HeroImage.jpg";
 import HeroBgAnimation from "../HeroBgAnimation";
-import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 import {
   headContainerAnimation,
@@ -157,7 +156,7 @@ const ResumeButton = styled.a`
     hsla(271, 100%, 50%, 1) 0%,
     hsla(294, 100%, 50%, 1) 100%
   );
-  box-shadow: 20px 20px 60px #1f2634, -20px -20px 60px #1f2634;
+  box-shadow: ${({ theme }) => `20px 20px 60px ${theme.bgLight}, -20px -20px 60px ${theme.bgLight}`};
   border-radius: 50px;
   font-weight: 600;
   font-size: 20px;
@@ -165,7 +164,7 @@ const ResumeButton = styled.a`
      &:hover {
         transform: scale(1.05);
     transition: all 0.4s ease-in-out;
-    box-shadow:  20px 20px 60px #1F2634,
+    box-shadow: ${({ theme }) => `20px 20px 60px ${theme.bgLight}`};
     filter: brightness(1);
     }    
     
@@ -255,9 +254,7 @@ const Hero = () => {
             </HeroLeftContainer>
             <HeroRightContainer>
               <motion.div {...headContentAnimation}>
-                <Tilt>
-                  <Img src={HeroImg} alt="Nityanand Yadav" />
-                </Tilt>
+                <Img src={HeroImg} alt="Nityanand Yadav" />
               </motion.div>
             </HeroRightContainer>
           </HeroInnerContainer>

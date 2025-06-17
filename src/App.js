@@ -1,15 +1,16 @@
-import styled, { ThemeProvider } from "styled-components";
-import { darkTheme } from "./utils/Themes";
-import Navbar from "./components/Navbar";
+import styled from "styled-components";
 import { BrowserRouter } from "react-router-dom";
+import Navbar from "./components/Navbar";
 import Hero from "./components/sections/Hero";
 import Skills from "./components/sections/Skills";
-// import Experience from "./components/sections/Experience";
 import Education from "./components/sections/Education";
 import StartCanvas from "./components/canvas/Stars";
 import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/sections/Footer";
+import { ThemeProvider } from "./utils/ThemeContext";
+import { ThemeProvider as StyledThemeProvider } from "styled-components";
+import { useThemeContext } from "./utils/ThemeContext";
 
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -34,9 +35,12 @@ const Wrapper = styled.div`
   clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 98%, 0 100%);
 `;
 
-function App() {
+// Wrapper component to use the theme context
+const AppContent = () => {
+  const { theme } = useThemeContext();
+  
   return (
-    <ThemeProvider theme={darkTheme}>
+    <StyledThemeProvider theme={theme}>
       <BrowserRouter>
         <Navbar />
         <Body>
@@ -45,7 +49,6 @@ function App() {
             <Hero />
             <Wrapper>
               <Skills />
-              {/* <Experience /> */}
             </Wrapper>
             <Projects />
             <Wrapper>
@@ -56,6 +59,14 @@ function App() {
           </div>
         </Body>
       </BrowserRouter>
+    </StyledThemeProvider>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
     </ThemeProvider>
   );
 }

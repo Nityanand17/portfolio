@@ -172,12 +172,30 @@ export const projects = [
     github: "https://github.com/Nityanand17/typeblaze",
     webapp: "https://typeblaze.vercel.app/"
   },
- 
+  {
+    id: 1,
+    title: "Portfolio Generator",
+    date: "Jun 2025 - Ongoing",
+    description:
+      "A no-code web application built with Next.js that allows users to generate and deploy their professional portfolio websites effortlessly. Users can fill out a form with their details, preview their generated portfolio in real-time, and deploy it to GitHub and Vercel with a single click. The project leverages GitHub and Vercel APIs, along with secure authentication via NextAuth.js.",
+    image: "https://s3-alpha.figma.com/hub/file/5306863300/bea35099-0863-45e5-8b51-c76f31192bfc-cover.png", 
+  
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "NextAuth.js",
+      "GitHub API",
+      "Vercel API"
+    ],
+    github: "https://github.com/Nityanand17/portfolio-generator",
+    webapp: "https://portfolio-generator-dun.vercel.app/" 
+  },
 
 
 
   {
-    id: 1,
+    id: 2,
     title: "moviemania",
     date: "Feb 2025 - Mar 2025",
    "description": "MovieMania is a web application where users can search for movies and play them, utilizing an API to fetch real-time movie data. It provides an intuitive interface, seamless streaming experience, and dynamic search functionality, making it easy for users to explore and watch their favorite films effortlessly.",
@@ -191,46 +209,72 @@ export const projects = [
     github: "https://github.com/Nityanand17/moviemania",
     webapp: "https://moviemania-smoky.vercel.app/"
   },
-
-  {
-    id: 2,
-    title: "LeetRadar",
-    date: "Nov 2024 - Dec 2024",
-    description:
-      "LeetRadar is a web application that tracks LeetCode statistics, providing insights into user progress, problem-solving trends, and coding performance. It features graphical data visualization, an interactive dashboard, and real-time updates to help users analyze their coding journey efficiently.",
-      image: 
-      "https://miro.medium.com/v2/resize:fit:990/1*2i9TlQ8_EFSs3T741jrmig.png",  
-
-    tags: [
-      "HTML",
-      "CSS",
-      "Javascript",
-      "Api"
-    ],
-    github: "https://github.com/Nityanand17/LeetRadar",
-    webapp: "https://nityanand17.github.io/LeetRadar/"
-  },
+  
 
   {
     id: 3,
-    title: "To-Do APP",
-    date: "May 2024 - July 2024",
+    title: "Mingo - Chat App",
+    date: "Mar 2025 - Apr 2025",
     description:
-      "To-Do App is a task management application that allows users to add, edit, and delete tasks, set priorities and due dates, and organize tasks using category-based filtering. Designed with a clean UI/UX, it helps users stay productive and manage their daily tasks efficiently.",
-    image:
-      "data:image/jpeg;base64,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",
-    tags: ["HTML", "Tailwind Css", "Javascript"],
-    
-    github: "https://github.com/Nityanand17/TO-DO",
-    webapp: "https://nityanand17.github.io/TO-DO/"
-  },
+      "Mingo is a full-stack chat and video calling web application featuring real-time messaging with typing indicators and reactions, 1-on-1 and group video calls with screen sharing and recording, JWT-based authentication, and a language exchange platform with 32 customizable UI themes. The app utilizes React, Express, MongoDB, TailwindCSS, Zustand, and Stream API for building a scalable and interactive communication platform.",
+    image: "https://raw.githubusercontent.com/Nityanand17/mingo/master/frontend/public/screenshot-for-readme.jpg",
+  
+    tags: [
+      "React",
+      "Express",
+      "MongoDB",
+      "TailwindCSS",
+      "Zustand",
+      "Stream API",
+      "TanStack Query",
+      "JWT"
+    ],
+    github: "https://github.com/Nityanand17/mingo",
+    webapp: "https://mingo-mgt2.onrender.com/" 
+  }
+,  
+{
+  id: 6,
+  title: "Internshala Bot",
+  date: "Apr 2025 - May 2025",
+  description:
+    "Intern Bot is a Python package designed to automate the internship and job application process. It uses ChatGPT to generate personalized cover letters, solve assignment questions, and enhance resumes based on job descriptions. The tool streamlines applications to multiple listings in one go, auto-detects fake postings, and produces detailed reports on application outcomes. Advanced options allow users to filter jobs, skip certain validations, and customize the process for efficiency.",
+  image: "https://media.wired.com/photos/5b6df22751297c21002b4536/3:2/w_1920,c_limit/HackerBot.jpg", 
+
+  tags: [
+    "Python",
+    "Playwright",
+    "ChatGPT API",
+    "Automation",
+    "Undetected Playwright",
+    "CLI Tool"
+  ],
+  github: "https://github.com/Nityanand17/intern-bot",
+  webapp: "https://github.com/Nityanand17/intern-bot" // Replace or remove if no live web app
+}
+,
+{
+  id: 4,
+  title: "ChessVerse -Chess Game",
+  date: "May 2025 - Jun 2025",
+  description:
+    "ChessVerse is a visually appealing multiplayer chess platform featuring both AI-powered and real-time online gameplay. Users can challenge an AI opponent built with Gemini or engage in multiplayer matches via real-time communication using Socket.io. The game boasts a responsive design, smooth animations, and a clean, modern interface to provide an immersive chess-playing experience across all devices.",
+  image: "https://raw.githubusercontent.com/Nityanand17/chessverse/refs/heads/main/public/background.jpg", 
+
+  tags: [
+    "React",
+    "Socket.io",
+    "chess.js",
+    "Tailwind CSS"
+  ],
+  github: "https://github.com/Nityanand17/chess-game",
+  webapp: "https://chessverse-three.vercel.app/"
+}
+
+,
+
+
  
 ];
 
-export const TimeLineData = [
-  { year: 2017, text: "Started my journey" },
-  { year: 2018, text: "Worked as a freelance developer" },
-  { year: 2019, text: "Founded JavaScript Mastery" },
-  { year: 2020, text: "Shared my projects with the world" },
-  { year: 2021, text: "Started my own platform" },
-];
+

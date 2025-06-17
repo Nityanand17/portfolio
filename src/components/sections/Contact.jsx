@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { Snackbar } from '@mui/material';
+import { Snackbar, CircularProgress } from '@mui/material';
 
 const Container = styled.div`
 display: flex;
@@ -103,7 +103,7 @@ const ContactInputMessage = styled.textarea`
   }
 `
 
-const ContactButton = styled.input`
+const ContactButton = styled.button`
   width: 100%;
   text-decoration: none;
   text-align: center;
@@ -118,28 +118,44 @@ const ContactButton = styled.input`
   color: ${({ theme }) => theme.text_primary};
   font-size: 18px;
   font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: scale(1.02);
+  }
+  
+  &:disabled {
+    background: #666;
+    cursor: not-allowed;
+    transform: none;
+  }
 `
 
-
-
 const Contact = () => {
-
-  //hooks
-  const [open, setOpen] = React.useState(false);
+  // hooks
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
   const form = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    emailjs.sendForm('service_86lr25a', 'template_f6xhdep', form.current, 'MjoEUyWeQyLESjjwx')
+    setLoading(true);
+    
+    emailjs.sendForm('service_bro7uxp', 'template_f6xhdep', form.current, 'MjoEUyWeQyLESjjwx')
       .then((result) => {
         setOpen(true);
         form.current.reset();
+        setLoading(false);
       }, (error) => {
         console.log(error.text);
+        setLoading(false);
       });
   }
-
-
 
   return (
     <Container>
@@ -148,11 +164,20 @@ const Contact = () => {
         <Desc>Feel free to reach out to me for any questions or opportunities!</Desc>
         <ContactForm ref={form} onSubmit={handleSubmit}>
           <ContactTitle>Email Me 🚀</ContactTitle>
-          <ContactInput placeholder="Your Email" name="from_email" />
-          <ContactInput placeholder="Your Name" name="from_name" />
-          <ContactInput placeholder="Subject" name="subject" />
-          <ContactInputMessage placeholder="Message" rows="4" name="message" />
-          <ContactButton type="submit" value="Send" />
+          <ContactInput placeholder="Your Email" name="from_email" required />
+          <ContactInput placeholder="Your Name" name="from_name" required />
+          <ContactInput placeholder="Subject" name="subject" required />
+          <ContactInputMessage placeholder="Message" rows="4" name="message" required />
+          <ContactButton type="submit" disabled={loading}>
+            {loading ? (
+              <>
+                <CircularProgress size={20} color="inherit" /> 
+                Sending...
+              </>
+            ) : (
+              'Send Mail'
+            )}
+          </ContactButton>
         </ContactForm>
         <Snackbar
           open={open}

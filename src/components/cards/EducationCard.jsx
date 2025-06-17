@@ -1,6 +1,7 @@
 import React from "react";
 import { VerticalTimelineElement } from "react-vertical-timeline-component";
 import styled from "styled-components";
+import { useThemeContext } from "../../utils/ThemeContext";
 
 const Top = styled.div`
   width: 100%;
@@ -72,6 +73,8 @@ const Span = styled.div`
 `;
 
 const EducationCard = ({ education }) => {
+  const { isDarkMode } = useThemeContext();
+  
   return (
     <VerticalTimelineElement
       icon={
@@ -87,15 +90,27 @@ const EducationCard = ({ education }) => {
         display: "flex",
         flexDirection: "column",
         gap: "12px",
-        background: "#1d1836",
-        color: "#fff",
-        boxShadow: "rgba(23, 92, 230, 0.15) 0px 4px 24px",
-        backgroundColor: "rgba(17, 25, 40, 0.83)",
-        border: "1px solid rgba(255, 255, 255, 0.125)",
+        background: isDarkMode ? "#1d1836" : "#f5f5f5",
+        color: isDarkMode ? "#fff" : "#000",
+        boxShadow: isDarkMode 
+          ? "rgba(23, 92, 230, 0.15) 0px 4px 24px"
+          : "rgba(190, 26, 219, 0.15) 0px 4px 24px",
+        backgroundColor: isDarkMode 
+          ? "rgba(17, 25, 40, 0.83)"
+          : "rgba(255, 255, 255, 0.83)",
+        border: isDarkMode
+          ? "1px solid rgba(255, 255, 255, 0.125)"
+          : "1px solid rgba(0, 0, 0, 0.125)",
         borderRadius: "6px",
       }}
       contentArrowStyle={{
-        borderRight: "7px solid  rgba(255, 255, 255, 0.3)",
+        borderRight: isDarkMode
+          ? "7px solid rgba(255, 255, 255, 0.3)"
+          : "7px solid rgba(0, 0, 0, 0.3)",
+      }}
+      iconStyle={{
+        background: isDarkMode ? "#1d1836" : "#fff",
+        color: isDarkMode ? "#fff" : "#000",
       }}
       date={education?.date}
     >
